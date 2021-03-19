@@ -1,0 +1,40 @@
+﻿<Page
+    x:Class="App1.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App1"
+    xmlns:data="using:App1.Models"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <ListView Name="PersonsGrid" ItemsSource="{x:Bind PList}" ItemClick="View_ItemClick" IsItemClickEnabled="True">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="data:Person">
+                    <Grid Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Width="50" Height="50">
+                            <Image.Source>
+                                <BitmapImage UriSource="{Binding avatar}" />
+                            </Image.Source>
+                        </Image>
+                        <StackPanel Grid.Column="1" Background="White">
+                            <TextBlock Text="{x:Bind first_name}" FontSize="10" Foreground="Brown"/>
+                            <TextBlock Text="{x:Bind last_name}" FontSize="10" Foreground="Brown"/>
+                            <TextBlock Text="{x:Bind email}"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
